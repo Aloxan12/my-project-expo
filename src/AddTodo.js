@@ -1,13 +1,17 @@
 import React, {useState} from 'react';
-import {Button, StyleSheet, TextInput, View} from 'react-native';
+import {Alert, Button, StyleSheet, TextInput, View} from 'react-native';
 
 
 export const AddTodo =({onSubmit})=> {
     const [value, setValue] = useState('')
 
     const onPressHandler =()=>{
-        onSubmit(value)
-        setValue('')
+        if(value.trim()){
+            onSubmit(value)
+            setValue('')
+        }else {
+            Alert.alert('Название делла не может быть пустым')
+        }
     }
     return (
         <View style={styles.block}>
